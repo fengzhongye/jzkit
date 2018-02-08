@@ -1,6 +1,6 @@
 {
   "name": "jzkit",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React 组件库",
   "main": "build/index.js",
   "scripts": {
