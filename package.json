@@ -1,0 +1,22 @@
+{
+  "name": "jzkit",
+  "version": "1.0.0",
+  "description": "React组件库",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch",
+    "build": "webpack"
+  },
+  "author": "wangyafei",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.2.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1"
+  }
+}
