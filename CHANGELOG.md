@@ -1,16 +1,13 @@
 # Changelog
 
-## 1.1.0 ( December 27, 2017 )
+## 1.0.0 ( February 8, 2018 )
 
 ### News
 
-We have decided to track and follow philosophy of `create-react-app` and constantly update our NPM library starter with the updates of `create-react-app` 
+准备开发一套公司用的组件库
 
 ### Breaking
 
-- Removed Sass support by default
+- 添加了对Less的支持
 
 ### Main
-
-- Updated to `create-react-app` version `1.4.3`
-- Updated demo example of library 

@@ -24,5 +24,4 @@ const SecondExample = () => (
     </a>
   </div>
 );
-
 export default SecondExample;
