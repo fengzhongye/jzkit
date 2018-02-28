@@ -1,12 +1,11 @@
 import React from 'react';
-import Example from '../lib';
-import { SecondExample } from '../lib';
+import { DocumentTitle } from '../lib';
 
 const App = () => (
-  <div>
-    <Example />
-    <SecondExample />
-  </div>
+  <DocumentTitle title="首页">
+    <div>
+      测试页面
+    </div>
+  </DocumentTitle>
 );
-
 export default App;

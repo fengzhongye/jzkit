@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <title>React App</title>
+    <style type="text/css">
+        *{margin:0; padding:0 }
+        .rect{
+            width:200px;
+            height:300px;
+            border:1px solid #ddd;
+            padding: 5px;
+            overflow:auto;
+        }
+    </style>
+  </head>
+  <body>
+      <div id="rect" class="rect">
+        <p>aaaaaaaaaaaaa</p><p>aaaaaaaaaaaaa</p><p>aaaaaaaaaaaaa</p><p>aaaaaaaaaaaaa</p><p>aaaaaaaaaaaaa</p><p>aaaaaaaaaaaaa</p><p>aaaaaaaaaaaaa</p><p>aaaaaaaaaaaaa</p><p>aaaaaaaaaaaaa</p>
+        <p>aaaaaaaaaaaaa</p><p>aaaaaaaaaaaaa</p><p>aaaaaaaaaaaaa</p><p>aaaaaaaaaaaaa</p><p>aaaaaaaaaaaaa</p><p>aaaaaaaaaaaaa</p><p>aaaaaaaaaaaaa</p><p>aaaaaaaaaaaaa</p><p>aaaaaaaaaaaaa</p>
+      </div>
+      <script type="text/javascript">
+        var rect = document.getElementById('rect');
+        var clientWidth = rect.clientWidth;
+        var clientHeight = rect.clientHeight;
+        var scrollWidth = rect.scrollWidth;
+        var scrollHeight = rect.scrollHeight;
+        var offsetWidth = rect.offsetWidth;
+        var offsetHeight = rect.offsetHeight;
+        // client = padding + width
+        console.log('clientWidth: ' + clientWidth);
+        console.log('clientHeight: ' + clientHeight);
+
+        // scroll = padding + scroll
+        console.log('scrollWidth: ' + scrollWidth);
+        console.log('scrollHeight: ' + scrollHeight);
+
+        // offset = border + client + padding
+        console.log('offsetWidth: ' + offsetWidth);
+        console.log('offsetHeight: ' + offsetHeight);
+      </script>
+  </body>
+</html>

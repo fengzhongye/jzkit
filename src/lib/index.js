@@ -1,8 +1,6 @@
-import Example from './components/Example';
-import SecondExample from './components/SecondExample';
-
-export default Example;
-
+import DocumentTitle from './components/DocumentTitle';
+import withSideEffect from './components/side-effect';
 export {
-  SecondExample,
+  DocumentTitle,
+  withSideEffect
 };
