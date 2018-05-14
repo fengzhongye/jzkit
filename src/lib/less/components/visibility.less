@@ -1,0 +1,151 @@
+// Name:            Visibility
+// Description:     Utilities to show or hide content on breakpoints, hover or touch
+//
+// Component:       `jz-hidden-*`
+//                  `jz-visible-*`
+//                  `jz-invisible`
+//                  `jz-visible-toggle`
+//                  `jz-hidden-hover`
+//                  `jz-invisible-hover`
+//                  `jz-hidden-touch`
+//                  `jz-hidden-notouch`
+//
+// ========================================================================
+
+
+/* ========================================================================
+   Component: Visibility
+ ========================================================================== */
+
+/*
+ * Hidden
+ * `hidden` attribute also set here to make it stronger
+ */
+
+[hidden],
+.jz-hidden { display: none !important; }
+
+/* Phone landscape and bigger */
+@media (min-width: @breakpoint-small) {
+
+    .jz-hidden\@s { display: none !important; }
+
+}
+
+/* Tablet landscape and bigger */
+@media (min-width: @breakpoint-medium) {
+
+    .jz-hidden\@m { display: none !important; }
+
+}
+
+/* Desktop and bigger */
+@media (min-width: @breakpoint-large) {
+
+    .jz-hidden\@l { display: none !important; }
+
+}
+
+/* Large screen and bigger */
+@media (min-width: @breakpoint-xlarge) {
+
+    .jz-hidden\@xl { display: none !important; }
+
+}
+
+/*
+ * Visible
+ */
+
+/* Phone portrait and smaller */
+@media (max-width: @breakpoint-xsmall-max) {
+
+    .jz-visible\@s { display: none !important; }
+
+}
+
+/* Phone landscape and smaller */
+@media (max-width: @breakpoint-small-max) {
+
+    .jz-visible\@m { display: none !important; }
+
+}
+
+/* Tablet landscape and smaller */
+@media (max-width: @breakpoint-medium-max) {
+
+    .jz-visible\@l { display: none !important; }
+
+}
+
+/* Desktop and smaller */
+@media (max-width: @breakpoint-large-max) {
+
+    .jz-visible\@xl { display: none !important; }
+
+}
+
+
+/* Visibility
+ ========================================================================== */
+
+.jz-invisible { visibility: hidden !important; }
+
+
+/* Hover
+ ========================================================================== */
+
+/*
+ * Hidden
+ * Can't use `display: hidden` because it's not focusable. This is accessible through keyboard.
+ */
+
+.jz-visible-toggle:not(:hover):not(.jz-hover) .jz-hidden-hover:not(:focus) {
+    position: absolute !important;
+    width: 0 !important;
+    height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+}
+
+/*
+ * Invisible
+ * Can't use `visibility: hidden` because it's not focusable. This is accessible through keyboard.
+ */
+
+.jz-visible-toggle:not(:hover):not(.jz-hover) .jz-invisible-hover:not(:focus) { opacity: 0 !important; }
+
+
+/* Touch
+ ========================================================================== */
+
+/*
+ * Hide if primary pointing device has limited accuracy, e.g. a touch screen.
+ * Works on mobile browsers: Safari, Chrome and Android browser
+ */
+
+@media (pointer: coarse) {
+    .jz-hidden-touch { display: none !important; }
+}
+
+/*
+ * Hide if primary pointing device is accurate, e.g. mouse.
+ * 1. Fallback for IE11 and Firefox, because `pointer` is not supported
+ * 2. Reset if supported
+ */
+
+/* 1 */
+.jz-hidden-notouch { display: none !important; }
+
+@media (pointer: coarse) {
+    .jz-hidden-notouch { display: block !important; }
+}
+
+
+// Hooks
+// ========================================================================
+
+.hook-visibility-misc;
+
+.hook-visibility-misc() {}

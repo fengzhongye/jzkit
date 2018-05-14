@@ -1,0 +1,53 @@
+// Name:            Sticky
+// Description:     Component to make elements sticky in the viewport
+//
+// Component:       `jz-sticky`
+//
+// Modifier:        `jz-sticky-fixed`
+//
+// States:          `jz-active`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@sticky-z-index:                                @global-z-index - 20;
+
+@sticky-animation-duration:                     0.2s;
+@sticky-reverse-animation-duration:             0.2s;
+
+
+/* ========================================================================
+   Component: Sticky
+ ========================================================================== */
+
+/*
+ * 1. Resolve frame rate issues on devices with lower frame rates by forcing hardware acceleration
+ */
+
+.jz-sticky-fixed {
+    z-index: @sticky-z-index;
+    box-sizing: border-box;
+    margin: 0 !important;
+    /* 1 */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+/*
+ * Faster animations
+ */
+
+.jz-sticky[class*='jz-animation-'] { animation-duration: @sticky-animation-duration; }
+
+.jz-sticky.jz-animation-reverse { animation-duration: @sticky-reverse-animation-duration; }
+
+
+// Hooks
+// ========================================================================
+
+.hook-sticky-misc;
+
+.hook-sticky-misc() {}

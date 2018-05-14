@@ -1,0 +1,390 @@
+// Name:            Animation
+// Description:     Utilities for keyframe animations
+//
+// Component:       `jz-animation-*`
+//
+// Modifiers:       `jz-animation-reverse`
+//                  `jz-animation-fast`
+//                  `jz-animation-fade`
+//                  `jz-animation-scale-up`
+//                  `jz-animation-scale-down`
+//                  `jz-animation-slide-top-*`
+//                  `jz-animation-slide-bottom-*`
+//                  `jz-animation-slide-left-*`
+//                  `jz-animation-slide-right-*`
+//                  `jz-animation-kenburns`
+//                  `jz-animation-shake`
+//
+// Sub-objects:     `jz-animation-toggle`
+//
+// States:          `jz-hover`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@animation-duration:                            0.5s;
+@animation-fade-duration:                       0.8s;
+@animation-kenburns-duration:                   15s;
+@animation-fast-duration:                       0.1s;
+
+@animation-slide-small-translate:               10px;
+@animation-slide-medium-translate:              50px;
+
+
+/* ========================================================================
+   Component: Animation
+ ========================================================================== */
+
+[class*='jz-animation-'] {
+    animation-duration: @animation-duration;
+    animation-timing-function: ease-out;
+    animation-fill-mode: both;
+}
+
+
+/* Direction modifier
+ ========================================================================== */
+
+.jz-animation-reverse {
+    animation-direction: reverse;
+    animation-timing-function: ease-in;
+}
+
+
+/* Animations for scrollspy
+ ========================================================================== */
+
+/*
+ * Fade
+ */
+
+.jz-animation-fade {
+    animation-name: jz-fade;
+    animation-duration: @animation-fade-duration;
+    animation-timing-function: linear;
+}
+
+/*
+ * Scale
+ */
+
+.jz-animation-scale-up { animation-name: jz-fade-scale-02; }
+.jz-animation-scale-down { animation-name: jz-fade-scale-18; }
+
+/*
+ * Slide
+ */
+
+.jz-animation-slide-top { animation-name: jz-fade-top; }
+.jz-animation-slide-bottom { animation-name: jz-fade-bottom; }
+.jz-animation-slide-left { animation-name: jz-fade-left; }
+.jz-animation-slide-right { animation-name: jz-fade-right; }
+
+/*
+ * Slide Small
+ */
+
+.jz-animation-slide-top-small { animation-name: jz-fade-top-small; }
+.jz-animation-slide-bottom-small { animation-name: jz-fade-bottom-small; }
+.jz-animation-slide-left-small { animation-name: jz-fade-left-small; }
+.jz-animation-slide-right-small { animation-name: jz-fade-right-small; }
+
+/*
+ * Slide Medium
+ */
+
+.jz-animation-slide-top-medium { animation-name: jz-fade-top-medium; }
+.jz-animation-slide-bottom-medium { animation-name: jz-fade-bottom-medium; }
+.jz-animation-slide-left-medium { animation-name: jz-fade-left-medium; }
+.jz-animation-slide-right-medium { animation-name: jz-fade-right-medium; }
+
+/*
+ * Kenburns
+ */
+
+.jz-animation-kenburns {
+    animation-name: jz-scale-kenburns;
+    animation-duration: @animation-kenburns-duration;
+}
+
+/*
+ * Shake
+ */
+
+.jz-animation-shake { animation-name: jz-shake; }
+
+
+/* Duration modifier
+ ========================================================================== */
+
+.jz-animation-fast { animation-duration: @animation-fast-duration; }
+
+
+/* Enable animation only on hover
+========================================================================== */
+
+/*
+ * Note: Firefox and IE needs this because animations are not triggered when switching between display `none` and `block`
+ */
+
+.jz-animation-toggle:not(:hover):not(.jz-hover) [class*='jz-animation-'] { animation-name: none; }
+
+
+/* Keyframes used by animation classes
+ ========================================================================== */
+
+/*
+ * Fade
+ */
+
+@keyframes jz-fade {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/*
+ * Slide Top
+ */
+
+@keyframes jz-fade-top {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*
+ * Slide Bottom
+ */
+
+@keyframes jz-fade-bottom {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*
+ * Slide Left
+ */
+
+@keyframes jz-fade-left {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/*
+ * Slide Right
+ */
+
+@keyframes jz-fade-right {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/*
+ * Slide Top Small
+ */
+
+@keyframes jz-fade-top-small {
+    0% {
+        opacity: 0;
+        transform: translateY(-@animation-slide-small-translate);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*
+ * Slide Bottom Small
+ */
+
+@keyframes jz-fade-bottom-small {
+    0% {
+        opacity: 0;
+        transform: translateY(@animation-slide-small-translate);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*
+ * Slide Left Small
+ */
+
+@keyframes jz-fade-left-small {
+    0% {
+        opacity: 0;
+        transform: translateX(-@animation-slide-small-translate);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/*
+ * Slide Right Small
+ */
+
+@keyframes jz-fade-right-small {
+    0% {
+        opacity: 0;
+        transform: translateX(@animation-slide-small-translate);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/*
+ * Slide Top Medium
+ */
+
+@keyframes jz-fade-top-medium {
+    0% {
+        opacity: 0;
+        transform: translateY(-@animation-slide-medium-translate);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*
+ * Slide Bottom Medium
+ */
+
+@keyframes jz-fade-bottom-medium {
+    0% {
+        opacity: 0;
+        transform: translateY(@animation-slide-medium-translate);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*
+ * Slide Left Medium
+ */
+
+@keyframes jz-fade-left-medium {
+    0% {
+        opacity: 0;
+        transform: translateX(-@animation-slide-medium-translate);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/*
+ * Slide Right Medium
+ */
+
+@keyframes jz-fade-right-medium {
+    0% {
+        opacity: 0;
+        transform: translateX(@animation-slide-medium-translate);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/*
+ * Scale Up
+ */
+
+@keyframes jz-fade-scale-02 {
+    0% {
+        opacity: 0;
+        transform: scale(0.2);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/*
+ * Scale Down
+ */
+
+@keyframes jz-fade-scale-18 {
+    0% {
+        opacity: 0;
+        transform: scale(1.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/*
+ * Kenburns
+ */
+
+@keyframes jz-scale-kenburns {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.2); }
+}
+
+/*
+ * Shake
+ */
+
+@keyframes jz-shake {
+    0%, 100% { transform: translateX(0); }
+    10% { transform: translateX(-9px); }
+    20% { transform: translateX(8px); }
+    30% { transform: translateX(-7px); }
+    40% { transform: translateX(6px); }
+    50% { transform: translateX(-5px); }
+    60% { transform: translateX(4px); }
+    70% { transform: translateX(-3px); }
+    80% { transform: translateX(2px); }
+    90% { transform: translateX(-1px); }
+}
+
+
+// Hooks
+// ========================================================================
+
+.hook-animation-misc;
+
+.hook-animation-misc() {}

@@ -1,0 +1,93 @@
+// Name:            Slider
+// Description:     Component to create horizontal sliders
+//
+// Component:       `jz-slider`
+//
+// Sub-objects:     `jz-slider-container`
+//                  `jz-slider-items`
+//
+// States:          `jz-active`
+//
+// ========================================================================
+
+
+/* ========================================================================
+   Component: Slider
+ ========================================================================== */
+
+/*
+ * 1. Prevent tab highlighting on iOS.
+ */
+
+.jz-slider {
+    /* 1 */
+    -webkit-tap-highlight-color: transparent;
+    .hook-slider;
+}
+
+
+/* Container
+ ========================================================================== */
+
+/*
+ * 1. Clip child elements
+ */
+
+.jz-slider-container {
+    /* 1 */
+    overflow: hidden;
+}
+
+/* Items
+ ========================================================================== */
+
+/*
+ * 1. Optimize animation
+ */
+
+.jz-slider-items {
+    /* 1 */
+    will-change: transform;
+}
+
+/*
+ * 1. Reset list style without interfering with grid
+ * 2. Prevent displaying the callout information on iOS.
+ */
+
+.jz-slider-items:not(.jz-grid) {
+    display: flex;
+    /* 1 */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    /* 2 */
+    -webkit-touch-callout: none;
+}
+
+.jz-slider-items.jz-grid { flex-wrap: nowrap; }
+
+
+/* Item
+ ========================================================================== */
+
+/*
+ * 1. Let items take content dimensions (0 0 auto)
+ * 2. Create position context
+ */
+
+.jz-slider-items > * {
+    /* 1 */
+    flex: none;
+    /* 2 */
+    position: relative;
+}
+
+
+// Hooks
+// ========================================================================
+
+.hook-slider-misc;
+
+.hook-slider() {}
+.hook-slider-misc() {}

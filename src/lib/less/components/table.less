@@ -1,0 +1,343 @@
+// Name:            Table
+// Description:     Styles for tables
+//
+// Component:       `jz-table`
+//
+// Modifiers:       `jz-table-middle`
+//                  `jz-table-divider`
+//                  `jz-table-striped`
+//                  `jz-table-hover`
+//                  `jz-table-small`
+//                  `jz-table-justify`
+//                  `jz-table-shrink`
+//                  `jz-table-expand`
+//                  `jz-table-link`
+//                  `jz-table-responsive`
+//
+// States:          `jz-active`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@table-margin-vertical:                         @global-margin;
+
+@table-cell-padding-vertical:                   16px;
+@table-cell-padding-horizontal:                 12px;
+
+@table-header-cell-font-size:                   @global-font-size;
+@table-header-cell-font-weight:                 bold;
+@table-header-cell-color:                       @global-color;
+
+@table-footer-font-size:                        @global-small-font-size;
+
+@table-caption-font-size:                       @global-small-font-size;
+@table-caption-color:                           @global-muted-color;
+
+@table-row-active-background:                   #ffd;
+
+@table-divider-border-width:                    @global-border-width;
+@table-divider-border:                          @global-border;
+
+@table-striped-row-background:                  @global-muted-background;
+
+@table-hover-row-background:                    @table-row-active-background;
+
+@table-small-cell-padding-vertical:             10px;
+@table-small-cell-padding-horizontal:           12px;
+
+@table-expand-min-width:                        300px;
+
+
+/* ========================================================================
+   Component: Table
+ ========================================================================== */
+
+/*
+ * 1. Remove most spacing between table cells.
+ * 2. Behave like a block element
+ * 3. Style
+ */
+
+.jz-table {
+    /* 1 */
+    border-collapse: collapse;
+    border-spacing: 0;
+    /* 2 */
+    width: 100%;
+    /* 3 */
+    margin-bottom: @table-margin-vertical;
+    .hook-table;
+}
+
+/* Add margin if adjacent element */
+* + .jz-table { margin-top: @table-margin-vertical; }
+
+
+/* Header cell
+ ========================================================================== */
+
+/*
+ * 1. Style
+ */
+
+.jz-table th {
+    padding: @table-cell-padding-vertical @table-cell-padding-horizontal;
+    text-align: left;
+    vertical-align: bottom;
+    /* 1 */
+    font-size: @table-header-cell-font-size;
+    font-weight: @table-header-cell-font-weight;
+    color: @table-header-cell-color;
+    .hook-table-header-cell;
+}
+
+
+/* Cell
+ ========================================================================== */
+
+.jz-table td {
+    padding: @table-cell-padding-vertical @table-cell-padding-horizontal;
+    vertical-align: top;
+    .hook-table-cell;
+}
+
+/*
+ * Remove margin from the last-child
+ */
+
+.jz-table td > :last-child { margin-bottom: 0; }
+
+
+/* Footer
+ ========================================================================== */
+
+.jz-table tfoot {
+    font-size: @table-footer-font-size;
+    .hook-table-footer;
+}
+
+
+/* Caption
+ ========================================================================== */
+
+.jz-table caption {
+    font-size: @table-caption-font-size;
+    text-align: left;
+    color: @table-caption-color;
+    .hook-table-caption;
+}
+
+
+/* Row
+ ========================================================================== */
+
+.jz-table > tr.jz-active,
+.jz-table tbody tr.jz-active {
+    background: @table-row-active-background;
+    .hook-table-row-active;
+}
+
+
+/* Alignment modifier
+ ========================================================================== */
+
+.jz-table-middle,
+.jz-table-middle td { vertical-align: middle !important; }
+
+
+/* Style modifiers
+ ========================================================================== */
+
+/*
+ * Divider
+ */
+
+.jz-table-divider > tr:not(:first-child),
+.jz-table-divider > :not(:first-child) > tr,
+.jz-table-divider > :first-child > tr:not(:first-child) {
+    border-top: @table-divider-border-width solid @table-divider-border;
+    .hook-table-divider;
+}
+
+/*
+ * Striped
+ */
+
+.jz-table-striped > tr:nth-of-type(odd),
+.jz-table-striped tbody tr:nth-of-type(odd) {
+    background: @table-striped-row-background;
+    .hook-table-striped;
+}
+
+/*
+ * Hover
+ */
+
+.jz-table-hover > tr:hover,
+.jz-table-hover tbody tr:hover {
+    background: @table-hover-row-background;
+    .hook-table-hover;
+}
+
+
+/* Size modifier
+ ========================================================================== */
+
+.jz-table-small th,
+.jz-table-small td {
+    padding: @table-small-cell-padding-vertical @table-small-cell-padding-horizontal;
+    .hook-table-small;
+}
+
+
+/* Justify modifier
+ ========================================================================== */
+
+.jz-table-justify th:first-child,
+.jz-table-justify td:first-child { padding-left: 0; }
+
+.jz-table-justify th:last-child,
+.jz-table-justify td:last-child { padding-right: 0; }
+
+
+/* Cell size modifier
+ ========================================================================== */
+
+.jz-table-shrink { width: 1px; }
+.jz-table-expand { min-width: @table-expand-min-width; }
+
+
+/* Cell link modifier
+ ========================================================================== */
+
+/*
+ * Does not work with `jz-table-justify` at the moment
+ */
+
+.jz-table-link { padding: 0 !important; }
+
+.jz-table-link > a {
+    display: block;
+    padding: @table-cell-padding-vertical @table-cell-padding-horizontal;
+}
+
+.jz-table-small .jz-table-link > a { padding: @table-small-cell-padding-vertical @table-small-cell-padding-horizontal; }
+
+
+/* Responsive table
+ ========================================================================== */
+
+
+/* Phone landscape and smaller */
+@media (max-width: @breakpoint-small-max) {
+
+    .jz-table-responsive,
+    .jz-table-responsive tbody,
+    .jz-table-responsive th,
+    .jz-table-responsive td,
+    .jz-table-responsive tr { display: block; }
+
+    .jz-table-responsive thead { display: none; }
+
+    .jz-table-responsive th,
+    .jz-table-responsive td {
+        width: auto !important;
+        max-width: none !important;
+        min-width: 0 !important;
+        overflow: visible !important;
+        white-space: normal !important;
+    }
+
+    .jz-table-responsive th:not(:first-child):not(.jz-table-link),
+    .jz-table-responsive td:not(:first-child):not(.jz-table-link),
+    .jz-table-responsive .jz-table-link:not(:first-child) > a { padding-top: round(@table-cell-padding-vertical / 3) !important; }
+
+    .jz-table-responsive th:not(:last-child):not(.jz-table-link),
+    .jz-table-responsive td:not(:last-child):not(.jz-table-link),
+    .jz-table-responsive .jz-table-link:not(:last-child) > a { padding-bottom: round(@table-cell-padding-vertical / 3) !important; }
+
+    .jz-table-justify.jz-table-responsive th,
+    .jz-table-justify.jz-table-responsive td {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+}
+
+
+// Hooks
+// ========================================================================
+
+.hook-table-misc;
+
+.hook-table() {}
+.hook-table-header-cell() {}
+.hook-table-cell() {}
+.hook-table-footer() {}
+.hook-table-caption() {}
+.hook-table-row-active() {}
+.hook-table-divider() {}
+.hook-table-striped() {}
+.hook-table-hover() {}
+.hook-table-small() {}
+.hook-table-misc() {}
+
+
+// Inverse
+// ========================================================================
+
+@inverse-table-header-cell-color:                       @inverse-global-color;
+@inverse-table-caption-color:                           @inverse-global-muted-color;
+@inverse-table-row-active-background:                   fadeout(@inverse-global-muted-background, 2%);
+@inverse-table-divider-border:                          @inverse-global-border;
+@inverse-table-striped-row-background:                  @inverse-global-muted-background;
+@inverse-table-hover-row-background:                    @inverse-table-row-active-background;
+
+.hook-inverse() {
+
+    .jz-table th {
+        color: @inverse-table-header-cell-color;
+        .hook-inverse-table-header-cell;
+    }
+
+    .jz-table caption {
+        color: @inverse-table-caption-color;
+        .hook-inverse-table-caption;
+    }
+
+    .jz-table > tr.jz-active,
+    .jz-table tbody tr.jz-active {
+        background: @inverse-table-row-active-background;
+        .hook-inverse-table-row-active;
+    }
+
+    .jz-table-divider > tr:not(:first-child),
+    .jz-table-divider > :not(:first-child) > tr,
+    .jz-table-divider > :first-child > tr:not(:first-child) {
+        border-top-color: @inverse-table-divider-border;
+        .hook-inverse-table-divider;
+    }
+
+    .jz-table-striped > tr:nth-of-type(odd),
+    .jz-table-striped tbody tr:nth-of-type(odd) {
+        background: @inverse-table-striped-row-background;
+        .hook-inverse-table-striped;
+    }
+
+    .jz-table-hover > tr:hover,
+    .jz-table-hover tbody tr:hover {
+        background: @inverse-table-hover-row-background;
+        .hook-inverse-table-hover;
+    }
+
+}
+
+.hook-inverse-table-header-cell() {}
+.hook-inverse-table-caption() {}
+.hook-inverse-table-row-active() {}
+.hook-inverse-table-divider() {}
+.hook-inverse-table-striped() {}
+.hook-inverse-table-hover() {}

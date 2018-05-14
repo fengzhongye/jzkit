@@ -1,0 +1,101 @@
+// Name:            Sortable
+// Description:     Component to create sortable grids and lists
+//
+// Component:       `jz-sortable`
+//
+// Sub-objects:     `jz-sortable-drag`
+//                  `jz-sortable-placeholder`
+//                  `jz-sortable-handle`
+//
+// Modifiers:       `jz-sortable-empty`
+//
+// States:          `jz-drag`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@sortable-dragged-z-index:                      @global-z-index + 50;
+
+@sortable-placeholder-opacity:                  0;
+
+@sortable-empty-height:                         50px;
+
+
+/* ========================================================================
+   Component: Sortable
+ ========================================================================== */
+
+.jz-sortable {
+    position: relative;
+    .hook-sortable;
+}
+
+/*
+ * Deactivate browser touch actions in IE11
+ */
+
+.jz-sortable > * { touch-action: none; }
+
+/*
+ * Deactivate pointer-events on SVGs in Safari
+ */
+
+.jz-sortable svg { pointer-events: none; }
+
+/*
+ * Remove margin from the last-child
+ */
+
+.jz-sortable > :last-child { margin-bottom: 0; }
+
+
+/* Drag
+ ========================================================================== */
+
+.jz-sortable-drag {
+    position: absolute !important;
+    z-index: @sortable-dragged-z-index !important;
+    pointer-events: none;
+    .hook-sortable-drag;
+}
+
+
+/* Placeholder
+ ========================================================================== */
+
+.jz-sortable-placeholder {
+    opacity: @sortable-placeholder-opacity;
+    .hook-sortable-placeholder;
+}
+
+
+/* Empty modifier
+ ========================================================================== */
+
+.jz-sortable-empty {
+    min-height: @sortable-empty-height;
+    .hook-sortable-empty;
+}
+
+
+/* Handle
+ ========================================================================== */
+
+/* Hover */
+.jz-sortable-handle:hover { cursor: move; }
+
+
+
+// Hooks
+// ========================================================================
+
+.hook-sortable-misc;
+
+.hook-sortable() {}
+.hook-sortable-drag() {}
+.hook-sortable-placeholder() {}
+.hook-sortable-empty() {}
+.hook-sortable-misc() {}

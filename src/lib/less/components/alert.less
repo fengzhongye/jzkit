@@ -1,0 +1,196 @@
+// Name:            Alert
+// Description:     Component to create alert messages
+//
+// Component:       `jz-alert`
+//
+// Adopted:         `jz-alert-close`
+//
+// Modifiers:       `jz-alert-primary`
+//                  `jz-alert-success`
+//                  `jz-alert-warning`
+//                  `jz-alert-danger`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@alert-margin-vertical:                         @global-margin;
+@alert-padding:                                 @global-small-gutter;
+@alert-padding-right:                           @alert-padding + 14px;
+@alert-background:                              @global-muted-background;
+@alert-color:                                   @global-color;
+
+@alert-close-top:                               @alert-padding + 5px;
+@alert-close-right:                             @alert-padding;
+
+@alert-primary-background:                      lighten(tint(@global-primary-background, 40%), 20%);
+@alert-primary-color:                           @global-primary-background;
+
+@alert-success-background:                      lighten(tint(@global-success-background, 40%), 25%);
+@alert-success-color:                           @global-success-background;
+
+@alert-warning-background:                      lighten(tint(@global-warning-background, 45%), 15%);
+@alert-warning-color:                           @global-warning-background;
+
+@alert-danger-background:                       lighten(tint(@global-danger-background, 40%), 20%);
+@alert-danger-color:                            @global-danger-background;
+
+
+/* ========================================================================
+   Component: Alert
+ ========================================================================== */
+
+.jz-alert {
+    position: fixed;
+    z-index:9999;
+    left:50%;
+    color: @alert-color;
+    .hook-alert;
+}
+.jz-alert.jz-notice {
+    left:auto;
+}
+.jz-alert-fade-enter {
+  opacity: 0.01;
+}
+.jz-alert-fade-enter-active {
+  opacity: 1;
+  transition: opacity 200ms ease-in;
+}
+.jz-alert-fade-leave {
+  opacity: 1;
+}
+.jz-alert-fade-leave-active {
+  opacity: 0.01;
+  transition: opacity 200ms ease-in;
+}
+.jz-alert-notice-wrapper{
+  text-align: center;
+}
+.jz-notice .jz-alert-notice-wrapper{
+  text-align:left;
+}
+.jz-alert-notice{
+    right: 50%;
+    padding: 10px 30px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.28) !important;
+    background: #fff;
+    display: inline-block;
+    width: auto;
+    line-height: 1.5;
+    position: relative;
+    margin: 5px;
+}
+.jz-notice .jz-alert-notice{
+  right:auto;
+}
+.jz-alert-notice-close{
+  position: absolute;
+  right: 5px;
+  top: 3px;
+  cursor: pointer;
+  outline: none;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: 0 1px 0 #fff;
+  filter: alpha(opacity=20);
+  opacity: .2;
+  text-decoration: none;
+}
+/* Add margin if adjacent element */
+* + .jz-alert { margin-top: @alert-margin-vertical; }
+
+/*
+ * Remove margin from the last-child
+ */
+
+.jz-alert > :last-child { margin-bottom: 0; }
+
+
+/* Close
+ * Adopts `jz-close`
+ ========================================================================== */
+
+.jz-alert-close {
+    position: absolute;
+    top: @alert-close-top;
+    right: @alert-close-right;
+    .hook-alert-close;
+}
+
+/*
+ * Remove margin from adjacent element
+ */
+
+.jz-alert-close:first-child + * { margin-top: 0; }
+
+/*
+ * Hover + Focus
+ */
+
+.jz-alert-close:hover,
+.jz-alert-close:focus {
+    .hook-alert-close-hover;
+}
+
+
+/* Style modifiers
+ ========================================================================== */
+
+/*
+ * Primary
+ */
+
+.jz-alert-primary {
+    background: @alert-primary-background;
+    color: @alert-primary-color;
+    .hook-alert-primary;
+}
+
+/*
+ * Success
+ */
+
+.jz-alert-success {
+    background: @alert-success-background;
+    color: @alert-success-color;
+    .hook-alert-success;
+}
+
+/*
+ * Warning
+ */
+
+.jz-alert-warning {
+    background: @alert-warning-background;
+    color: @alert-warning-color;
+    .hook-alert-warning;
+}
+
+/*
+ * Danger
+ */
+
+.jz-alert-danger {
+    background: @alert-danger-background;
+    color: @alert-danger-color;
+    .hook-alert-danger;
+}
+
+
+// Hooks
+// ========================================================================
+
+.hook-alert-misc;
+
+.hook-alert() {}
+.hook-alert-close() {}
+.hook-alert-close-hover() {}
+.hook-alert-primary() {}
+.hook-alert-success() {}
+.hook-alert-warning() {}
+.hook-alert-danger() {}
+.hook-alert-misc() {}

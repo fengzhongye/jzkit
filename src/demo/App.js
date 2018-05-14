@@ -1,11 +1,8 @@
 import React from 'react';
-import { DocumentTitle } from '../lib';
-
+import { Button } from '../lib';
 const App = () => (
-  <DocumentTitle title="首页">
-    <div>
+  <Button title="首页">
       测试页面
-    </div>
-  </DocumentTitle>
+  </Button>
 );
 export default App;

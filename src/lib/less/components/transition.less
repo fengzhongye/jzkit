@@ -1,0 +1,145 @@
+// Name:            Transition
+// Description:     Utilities for transitions
+//
+// Component:       `jz-transition-*`
+//
+// Modifiers:       `jz-transition-fade`
+//                  `jz-transition-scale-up`
+//                  `jz-transition-scale-down`
+//                  `jz-transition-slide-top-*`
+//                  `jz-transition-slide-bottom-*`
+//                  `jz-transition-slide-left-*`
+//                  `jz-transition-slide-right-*`
+//                  `jz-transition-opaque`
+//                  `jz-transition-slow`
+//
+// Sub-objects:     `jz-transition-toggle`,
+//                  `jz-transition-active`
+//
+// States:          `jz-hover`
+//                  `jz-active`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@transition-duration:                           0.3s;
+
+@transition-scale:                              1.1;
+
+@transition-slide-small-translate:              10px;
+@transition-slide-medium-translate:             50px;
+
+@transition-slow-duration:                      0.7s;
+
+
+/* ========================================================================
+   Component: Transition
+ ========================================================================== */
+
+/*
+ * Using multiple selectors to exclude `jz-transition-toggle`
+ * Note: Transitions don't work with `jz-postion-center-*` classes because they also use `transform`
+ *       Just put the transition in an extra `div`
+ */
+
+.jz-transition-fade,
+[class*='jz-transition-scale'],
+[class*='jz-transition-slide'] {
+    transition: @transition-duration ease-out;
+    transition-property: opacity, transform, filter;
+}
+
+.jz-transition-toggle:focus { outline: none; }
+
+/*
+ * Fade
+ */
+
+.jz-transition-fade { opacity: 0; }
+
+/* Show */
+.jz-transition-toggle:hover [class*='jz-transition-fade'],
+.jz-transition-toggle.jz-hover [class*='jz-transition-fade'],
+.jz-transition-toggle:focus [class*='jz-transition-fade'],
+.jz-transition-active.jz-active [class*='jz-transition-fade'] { opacity: 1; }
+
+/*
+ * Scale
+ * Note: Using `scale3d` for better image rendering
+ */
+
+[class*='jz-transition-scale'] { opacity: 0; }
+
+.jz-transition-scale-up { transform: scale3d(1,1,1); }
+
+.jz-transition-scale-down { transform: scale3d(@transition-scale,@transition-scale,1); }
+
+/* Show */
+.jz-transition-toggle:hover .jz-transition-scale-up,
+.jz-transition-toggle.jz-hover .jz-transition-scale-up,
+.jz-transition-toggle:focus .jz-transition-scale-up,
+.jz-transition-active.jz-active .jz-transition-scale-up {
+    opacity: 1;
+    transform: scale3d(@transition-scale,@transition-scale,1);
+}
+
+.jz-transition-toggle:hover .jz-transition-scale-down,
+.jz-transition-toggle.jz-hover .jz-transition-scale-down,
+.jz-transition-toggle:focus .jz-transition-scale-down,
+.jz-transition-active.jz-active .jz-transition-scale-down {
+    opacity: 1;
+    transform: scale3d(1,1,1);
+}
+
+/*
+ * Slide
+ */
+
+[class*='jz-transition-slide'] { opacity: 0; }
+
+.jz-transition-slide-top { transform: translateY(-100%); }
+.jz-transition-slide-bottom { transform: translateY(100%); }
+.jz-transition-slide-left { transform: translateX(-100%); }
+.jz-transition-slide-right { transform: translateX(100%); }
+
+.jz-transition-slide-top-small { transform: translateY(-@transition-slide-small-translate); }
+.jz-transition-slide-bottom-small { transform: translateY(@transition-slide-small-translate); }
+.jz-transition-slide-left-small { transform: translateX(-@transition-slide-small-translate); }
+.jz-transition-slide-right-small { transform: translateX(@transition-slide-small-translate); }
+
+.jz-transition-slide-top-medium { transform: translateY(-@transition-slide-medium-translate); }
+.jz-transition-slide-bottom-medium { transform: translateY(@transition-slide-medium-translate); }
+.jz-transition-slide-left-medium { transform: translateX(-@transition-slide-medium-translate); }
+.jz-transition-slide-right-medium { transform: translateX(@transition-slide-medium-translate); }
+
+/* Show */
+.jz-transition-toggle:hover [class*='jz-transition-slide'],
+.jz-transition-toggle.jz-hover [class*='jz-transition-slide'],
+.jz-transition-toggle:focus [class*='jz-transition-slide'],
+.jz-transition-active.jz-active [class*='jz-transition-slide'] {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+}
+
+
+/* Opacity modifier
+========================================================================== */
+
+.jz-transition-opaque { opacity: 1; }
+
+
+/* Duration modifiers
+========================================================================== */
+
+.jz-transition-slow { transition-duration: @transition-slow-duration; }
+
+
+// Hooks
+// ========================================================================
+
+.hook-transition-misc;
+
+.hook-transition-misc() {}

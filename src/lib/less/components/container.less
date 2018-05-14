@@ -1,0 +1,106 @@
+// Name:            Container
+// Description:     Component to align and center your site and grid content
+//
+// Component:       `jz-container`
+//
+// Modifier:        `jz-container-small`
+//                  `jz-container-large`
+//                  `jz-container-expand`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@container-max-width:                   1200px;
+@container-small-max-width:             900px;
+@container-large-max-width:             1600px;
+
+@container-padding-horizontal:          15px;
+@container-padding-horizontal-s:        @global-gutter;
+@container-padding-horizontal-m:        @global-medium-gutter;
+
+
+/* ========================================================================
+   Component: Container
+ ========================================================================== */
+
+/*
+ * 1. Box sizing has to be `content-box` so the max-width is always the same and
+ *    unaffected by the padding on different breakpoints. It's important for the size modifiers.
+ */
+
+.jz-container {
+    box-sizing: content-box; /* 1 */
+    max-width: @container-max-width;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: @container-padding-horizontal;
+    padding-right: @container-padding-horizontal;
+}
+
+/* Phone landscape and bigger */
+@media (min-width: @breakpoint-small) {
+
+    .jz-container {
+        padding-left: @container-padding-horizontal-s;
+        padding-right: @container-padding-horizontal-s;
+    }
+
+}
+
+/* Tablet landscape and bigger */
+@media (min-width: @breakpoint-medium) {
+
+    .jz-container {
+        padding-left: @container-padding-horizontal-m;
+        padding-right: @container-padding-horizontal-m;
+    }
+
+}
+
+/*
+ * Micro clearfix
+ */
+
+.jz-container::before,
+.jz-container::after {
+    content: "";
+    display: table;
+}
+
+.jz-container::after { clear: both; }
+
+/*
+ * Remove margin from the last-child
+ */
+
+.jz-container > :last-child { margin-bottom: 0; }
+
+/*
+ * Remove padding from nested containers
+ */
+
+.jz-container .jz-container {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
+/* Size modifier
+ ========================================================================== */
+
+.jz-container-small { max-width: @container-small-max-width; }
+
+.jz-container-large { max-width: @container-large-max-width; }
+
+.jz-container-expand { max-width: none; }
+
+
+// Hooks
+// ========================================================================
+
+.hook-container-misc;
+
+.hook-container-misc() {}

@@ -1,0 +1,136 @@
+// Name:            Background
+// Description:     Utilities for backgrounds
+//
+// Component:       `jz-background-*`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@background-default-background:                 @global-background;
+@background-muted-background:                   @global-muted-background;
+@background-primary-background:                 @global-primary-background;
+@background-secondary-background:               @global-secondary-background;
+
+
+/* ========================================================================
+   Component: Background
+ ========================================================================== */
+
+
+/* Color
+ ========================================================================== */
+
+.jz-background-default { background-color: @background-default-background; }
+.jz-background-muted { background-color: @background-muted-background; }
+.jz-background-primary { background-color: @background-primary-background; }
+.jz-background-secondary { background-color: @background-secondary-background; }
+
+
+/* Size
+ ========================================================================== */
+
+.jz-background-cover,
+.jz-background-contain {
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+.jz-background-cover { background-size: cover; }
+.jz-background-contain { background-size: contain; }
+
+
+/* Position
+ ========================================================================== */
+
+.jz-background-top-left { background-position: 0 0; }
+.jz-background-top-center { background-position: 50% 0; }
+.jz-background-top-right { background-position: 100% 0; }
+.jz-background-center-left { background-position: 0 50%; }
+.jz-background-center-center { background-position: 50% 50%; }
+.jz-background-center-right { background-position: 100% 50%; }
+.jz-background-bottom-left { background-position: 0 100%; }
+.jz-background-bottom-center { background-position: 50% 100%; }
+.jz-background-bottom-right { background-position: 100% 100%; }
+
+
+/* Repeat
+ ========================================================================== */
+
+.jz-background-norepeat { background-repeat: no-repeat; }
+
+
+/* Attachment
+ ========================================================================== */
+
+.jz-background-fixed { background-attachment: fixed; }
+
+/*
+ * Exclude touch devices because `fixed` doesn't work on iOS and Android
+ */
+
+@media (pointer: coarse) {
+    .jz-background-fixed { background-attachment: scroll; }
+}
+
+
+/* Image
+ ========================================================================== */
+
+/* Phone portrait and smaller */
+@media (max-width: @breakpoint-xsmall-max) {
+
+    .jz-background-image\@s { background-image: none !important; }
+
+}
+
+/* Phone landscape and smaller */
+@media (max-width: @breakpoint-small-max) {
+
+    .jz-background-image\@m { background-image: none !important; }
+
+}
+
+/* Tablet landscape and smaller */
+@media (max-width: @breakpoint-medium-max) {
+
+    .jz-background-image\@l { background-image: none !important; }
+
+}
+
+/* Desktop and smaller */
+@media (max-width: @breakpoint-large-max) {
+
+    .jz-background-image\@xl {background-image: none !important; }
+
+}
+
+
+/* Blend modes
+ ========================================================================== */
+
+.jz-background-blend-multiply { background-blend-mode: multiply; }
+.jz-background-blend-screen { background-blend-mode: screen; }
+.jz-background-blend-overlay { background-blend-mode: overlay; }
+.jz-background-blend-darken { background-blend-mode: darken; }
+.jz-background-blend-lighten { background-blend-mode: lighten; }
+.jz-background-blend-color-dodge { background-blend-mode: color-dodge; }
+.jz-background-blend-color-burn { background-blend-mode: color-burn; }
+.jz-background-blend-hard-light { background-blend-mode: hard-light; }
+.jz-background-blend-soft-light { background-blend-mode: soft-light; }
+.jz-background-blend-difference { background-blend-mode: difference; }
+.jz-background-blend-exclusion { background-blend-mode: exclusion; }
+.jz-background-blend-hue { background-blend-mode: hue; }
+.jz-background-blend-saturation { background-blend-mode: saturation; }
+.jz-background-blend-color { background-blend-mode: color; }
+.jz-background-blend-luminosity { background-blend-mode: luminosity; }
+
+
+// Hooks
+// ========================================================================
+
+.hook-background-misc;
+
+.hook-background-misc() {}
